@@ -24,7 +24,7 @@ const staticUsers: User[] = [
     displayName: "Alice",
     email: "alice@example.com",
     photoURL: "https://picsum.photos/seed/user001/200/300",
-    organizationId: "org-user001",
+    organizationId: "org-user002",
     colorCode: "#4CAF50",
     textColor: "#ffffff",
   },
