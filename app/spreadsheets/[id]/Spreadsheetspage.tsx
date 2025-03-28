@@ -46,9 +46,9 @@ export default function SpreadsheetPage({
         setFilename={setFilename}
         handleTitleFocus={handleTitleFocus}
       />
-      <p>Document {id}</p>
+      <p>Document ID {id}</p>
       <p>Table Here</p>
-      <p>{JSON.stringify(initialData)}</p>
+      <p>{JSON.stringify(initialData, null, 2)}</p>
     </div>
   );
 }
