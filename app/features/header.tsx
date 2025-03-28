@@ -20,7 +20,7 @@ const staticUsers: User[] = [
     displayName: "Bob",
     email: "bob@example.com",
     photoURL: "https://picsum.photos/seed/user002/200/300",
-    organizationId: "org-user002",
+    organizationId: "org-user001",
     colorCode: "#2196F3",
     textColor: "#ffffff",
   },
