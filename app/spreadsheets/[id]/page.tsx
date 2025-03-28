@@ -1,5 +1,5 @@
 import { makeSampleData } from "@/lib/sheetData";
-import SpreadsheetPage from "./SpreadsheetsPage";
+import SpreadsheetPage from "./Spreadsheetspage";
 
 export default async function Page({
   params,

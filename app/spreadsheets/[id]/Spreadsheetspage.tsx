@@ -8,7 +8,7 @@ import Header from "@/app/features/header";
 
 import { Cell } from "@/lib/sheetData";
 
-export function SpreadsheetPage({
+export default function SpreadsheetPage({
   id,
   initialData,
   initialTitle,
@@ -52,5 +52,3 @@ export function SpreadsheetPage({
     </div>
   );
 }
-
-export default SpreadsheetPage;
