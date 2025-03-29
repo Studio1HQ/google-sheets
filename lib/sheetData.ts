@@ -3,7 +3,7 @@ export const sampleFiles = [
     id: "ef414092-41e4-4215-b1b5-d5702fc17fc8",
     title: "Intergalactic Trade Routes",
     owner: "Alice",
-    date: "2025-03-13 19:57:00",
+    date: "2025-03-13",
     shared: false,
     starred: false,
     type: "sheets",
@@ -48,27 +48,42 @@ export const sampleFiles = [
     id: "bc95c8aa-7087-4030-97ff-aa7f04a3234e",
     title: "Fastest Ways to Get Rich (Legally?)",
     owner: "Mysterious Millionaire",
-    date: "Zara",
+    date: "2024-05-15",
     shared: true,
-    starred: false,
-    type: "sheets",
-  },
-  {
-    id: "79c3d8c1-a041-4e77-a6a2-cdf3b1328e1f",
-    title: "Fantasy Football Cheat Sheet 2024",
-    owner: "Milo",
-    date: "2023-10-04",
-    shared: true,
-    starred: true,
-    type: "sheets",
-  },
-  {
-    id: "57b779fe-7382-4ff7-836d-020fae0fff06",
-    title: "Best Excuses for Calling in Sick",
-    owner: "Nova",
-    date: "2023-04-17",
-    shared: false,
     starred: false,
     type: "sheets",
   },
 ];
+
+export type Cell = {
+  value: string;
+};
+
+export const getColumnLabel = (index: number): string => {
+  return String.fromCharCode(65 + index);
+};
+
+export const range = (len: number) => {
+  return Array.from({ length: len }, (_, i) => i);
+};
+
+const sampleData = [
+  ["Alice", "Sales", "2024-01-01", "100"],
+  ["Bob", "Marketing", "2024-02-02", "200"],
+  ["Charlie", "Support", "2024-03-03", "300"],
+  ["Diana", "Dev", "2024-04-04", "400"],
+  ["Eve", "HR", "2024-05-05", "500"],
+];
+
+export function makeSampleData(rows: number, cols: number) {
+  return range(rows).map((rowIndex) => {
+    const rowData: Record<string, Cell> = {};
+    for (let i = 0; i < cols; i++) {
+      const columnLabel = getColumnLabel(i);
+      rowData[columnLabel] = {
+        value: sampleData[rowIndex % sampleData.length][i],
+      };
+    }
+    return rowData;
+  });
+}
