@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
     if (typeof window !== "undefined" && !user) {
       const storedUser = localStorage.getItem("user-storage");
       if (!storedUser) {
-        login(staticUsers[0]); // Default to first user
+        login(staticUsers[0]);
       }
     }
   }, [user, login]);
