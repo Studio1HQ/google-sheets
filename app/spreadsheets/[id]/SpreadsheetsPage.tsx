@@ -25,7 +25,7 @@ import { useSkipper } from "@/lib/hooks";
 
 declare module "@tanstack/react-table" {
   interface TableMeta<TData extends RowData> {
-    updateData: (rowIndex: number, columnId: string, value: Cell) => void;
+    updateData: (rowIndex: number, columnId: string, value: string) => void;
   }
 }
 
@@ -46,11 +46,7 @@ function EditableCell<TData extends Record<string, Cell>>({
   const cellId = `cell-${row.index}-${column.id}`;
 
   const onBlur = () => {
-    table.options.meta?.updateData(
-      row.index,
-      column.id,
-      value as unknown as Cell
-    );
+    table.options.meta?.updateData(row.index, column.id, value);
     setIsActive(false);
   };
 
@@ -61,7 +57,7 @@ function EditableCell<TData extends Record<string, Cell>>({
   return (
     <div className="relative w-full h-full" id={cellId}>
       <input
-        value={value as string}
+        value={value}
         onChange={(e) => setValue(e.target.value)}
         onFocus={() => setIsActive(true)}
         onBlur={onBlur}
@@ -113,14 +109,14 @@ export function SpreadsheetPage({
   const [autoResetPageIndex, skipAutoResetPageIndex] = useSkipper();
 
   const updateData = debounce(
-    (rowIndex: number, columnId: string, value: Cell) => {
+    (rowIndex: number, columnId: string, value: string) => {
       skipAutoResetPageIndex();
       setData((old) =>
         old.map((row, index) => {
           if (index === rowIndex) {
             return {
               ...old[rowIndex]!,
-              [columnId]: value as Cell,
+              [columnId]: { value },
             } as Record<string, Cell>;
           }
           return row;
