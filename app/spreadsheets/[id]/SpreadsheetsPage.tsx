@@ -221,7 +221,6 @@ export function SpreadsheetPage({
                   {row.getVisibleCells().map((cell) => (
                     <div
                       key={cell.id}
-                      data-velt-target-comment-element-id={cell.id}
                       style={{ width: `${cell.column.getSize()}px` }}
                       className="border-r border-gray-200 h-6 overflow-hidden"
                     >
