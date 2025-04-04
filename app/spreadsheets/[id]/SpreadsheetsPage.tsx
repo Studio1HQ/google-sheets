@@ -63,7 +63,12 @@ function EditableCell<TData extends Record<string, Cell>>({
         onBlur={onBlur}
         className="w-full h-full border-none focus:outline-none bg-transparent px-1 py-0"
       />
-      {isActive && <VeltCommentBubble targetElementId={cellId} />}
+      {isActive && (
+        <VeltCommentBubble
+          targetElementId={cellId}
+          commentBubbleTargetPinHover={false}
+        />
+      )}
     </div>
   );
 }
@@ -161,8 +166,7 @@ export function SpreadsheetPage({
   useSetDocument(id, { documentName: filename });
   return (
     <div className="h-screen w-screen flex flex-col bg-white text-xs">
-      <VeltComments popoverMode={true} />
-
+      <VeltComments popoverMode={true} commentPinHighlighter={false} />
       <Header
         type="sheets"
         measureRef={measureRef}
